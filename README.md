@@ -25,11 +25,11 @@ The whole project was done by hand at gate level, with no HDL. The steps were:
 
 ```mermaid
 flowchart LR
-    A[Cipher specification] --> B[Truth tables]
-    B --> C[Karnaugh-map minimisation]
-    C --> D[NAND-NAND conversion]
-    D --> E[CircuitVerse simulation]
-    E --> F[Breadboard build]
+    A["Specification"] --> B["Truth tables"]
+    B --> C["K-maps"]
+    C --> D["NAND-only"]
+    D --> E["CircuitVerse"]
+    E --> F["Breadboard"]
 ```
 
 | | Encryption | Decryption |
@@ -95,16 +95,13 @@ Each sum-of-products was then converted to a **NAND-NAND** form, so both circuit
 
 ## Circuits
 
-<table>
-<tr>
-<td align="center"><b>Encryption</b> (ABCD → WXYZ)</td>
-<td align="center"><b>Decryption</b> (WXYZ → ABCD)</td>
-</tr>
-<tr>
-<td><img src="images/encryption-circuit.png" alt="NAND-only encryption circuit in CircuitVerse"></td>
-<td><img src="images/decryption-circuit.png" alt="NAND-only decryption circuit in CircuitVerse"></td>
-</tr>
-</table>
+**Encryption** (ABCD → WXYZ): 4 inverters, 6 product terms, 1 output NAND for W, and a 3-gate XOR for X.
+
+<p align="center"><img src="images/encryption-circuit.png" alt="NAND-only encryption circuit in CircuitVerse" width="760"></p>
+
+**Decryption** (WXYZ → ABCD): the same structure, mirrored.
+
+<p align="center"><img src="images/decryption-circuit.png" alt="NAND-only decryption circuit in CircuitVerse" width="760"></p>
 
 ## Hardware build
 
